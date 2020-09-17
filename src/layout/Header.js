@@ -1,22 +1,27 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Header = () =>
 {
-    const headerStyle = {
-        padding: "5px",
-        lineHeight: "10px"
-    };
-
     return (
         <header style={headerStyle}>
-            <h1 style={{ fontSize: "25px", marginBottom: "15px" }}>
-                React ToDo
-          </h1>
-            <p style={{ fontSize: "20px" }}>
-                Add todos to your list:
-          </p>
+            <h1>TodoList</h1>
+            |<Link className="link" style={linkStyle} to="/">Home</Link> || <Link style={linkStyle} to="/about">About</Link>|
         </header>
-    );
+    )
+};
+
+const headerStyle = {
+    background: "#808080",
+    color: '#FFFFFF',
+    textAlign: 'center'
+};
+
+const linkStyle = {
+    color: '#FFFFFF',
+    textDecoration: 'none'
 };
 
 export default Header;
