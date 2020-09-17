@@ -1,28 +1,39 @@
-import React from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class TodoItem extends React.Component
+export class TodoItem extends Component
 {
+    getStyle = () =>
+    {
+        return {
+            background: '#F4F4F4',
+            padding: '10px',
+            borderBottom: '1px #ccc dotted',
+            textDecoration: this.props.todo.completed ? 'line-through' : 'none',
+        }
+    };
+
     render()
     {
-        const completedStyle = {
-            fontStyle: "bold",
-            color: "#228B22"
-        };
-
-        const { completed, id, title } = this.props.todo;
-
+        const { id, title, completed } = this.props.todo;
         return (
-            <li className="todo-item">
-                <input
-                    type="checkbox"
-                    checked={completed}
-                    onChange={() => this.props.handleChangeProps(id)}
-                ></input>
-                <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
-                <span style={completed ? completedStyle : null}>{title}</span>
-            </li>
-        );
+            <div style={this.getStyle()}>
+                <p>
+                    <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} checked={completed ? 'checked' : ''} />{' '}
+                    {title}
+                    <button onClick={this.props.delTodo.bind(this, id)} style={{ float: 'right' }}>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </p>
+            </div>
+        )
     }
+}
+
+TodoItem.propTypes = {
+    todos: PropTypes.object.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    delTodo: PropTypes.func.isRequired
 }
 
 export default TodoItem;
