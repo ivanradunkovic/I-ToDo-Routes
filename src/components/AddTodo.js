@@ -13,7 +13,6 @@ export class AddTodo extends Component
         this.props.addTodo(this.state.title);
         this.setState({ title: '' });
     }
-
     onChange = (e) => this.setState({ title: e.target.value });
 
     render()
@@ -26,14 +25,12 @@ export class AddTodo extends Component
                     style={{ flex: '10', padding: '10px 15px', fontSize: '15px', border: '1px solid #C0C0C0', outline: 'none', fontWeight: '500', maxWidth: '75%' }}
                     placeholder="Add Todo..."
                     value={this.state.title}
-                    onChange={this.onChange}
-                />
+                    onChange={this.onChange} />
                 <input
                     type="submit"
                     value="Submit"
                     className="btn"
-                    style={{ flex: '1' }}
-                />
+                    style={{ flex: '1' }} />
             </form>
         )
     }
