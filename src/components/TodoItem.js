@@ -6,9 +6,9 @@ export class TodoItem extends Component
     getStyle = () =>
     {
         return {
-            background: '#F4F4F4',
-            padding: '10px',
-            borderBottom: '1px #ccc dotted',
+            background: '#FFFFFF',
+            padding: '5px',
+            borderBottom: '1px #2F4F4F solid',
             textDecoration: this.props.todo.completed ? 'line-through' : 'none',
         }
     };
@@ -21,9 +21,7 @@ export class TodoItem extends Component
                 <p>
                     <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} checked={completed ? 'checked' : ''} />{' '}
                     {title}
-                    <button onClick={this.props.delTodo.bind(this, id)} style={{ float: 'right' }}>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
+                    <button className="del" onClick={this.props.delTodo.bind(this, id)}>Delete</button>
                 </p>
             </div>
         )
